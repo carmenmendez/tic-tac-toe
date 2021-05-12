@@ -1,0 +1,34 @@
+body {
+    background-color: darkslategray;
+    color: antiquewhite;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 4px;
+    max-width: 600px;
+    width: 100%;
+}
+
+.tile {
+    background-color: antiquewhite;
+    font-size: 80px;
+    border: none;
+    color: inherit;
+    aspect-ratio: 1;
+}
+
+.tile.mark-x {
+    background-color: crimson;
+}
+
+.tile.tile.mark-o {
+    background-color: darkcyan;
+}
