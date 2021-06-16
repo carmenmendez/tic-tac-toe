@@ -13,7 +13,7 @@ class Game {
         this.isXturn = !this.isXturn;
         this.updateHeader(`Ahora es turno de ${this.getTurn()}`);
         this.board.renderBoard();
-        const winner = this.board.getWinner(); // undefined, 'o', 'x'
+        const winner = getWinner(); // undefined, 'o', 'x'
         const isDraw = this.board.allTilesFilled();
         if(winner) {
             this.updateHeader(`${winner.toUpperCase()} ha ganado el juego`);
@@ -39,7 +39,6 @@ class Game {
     }
     
     startGame() {
-        console.log('juego iniciado...')
         this.toggleRestart(false);
         const initMessage = `Bienvenidos a Tic Tac Toe, inicia el juego ${this.getTurn()}`
         this.updateHeader(initMessage);
@@ -51,7 +50,6 @@ class Game {
 
 class Board {
     constructor(externalClickHandler){
-        console.log('he creado una instancia del tablero')
         this.tiles = new Array(9).fill(null);
         this.externalClickHandler = externalClickHandler
     }
@@ -92,7 +90,7 @@ class Board {
         const boardElement = document.querySelector('.board');
         const buttons = this.tiles.map((tile, index) => {
             const button = document.createElement('button');
-            const markClass = tile === 'x' ? 'mark-x' : 'mark-o';
+            const markClass = tile === x ? 'mark-x' : 'mark-o';
             button.classList = `tile ${tile ? markClass : ''}`;
             button.innerText = tile;
             button.onclick = () => this.handleClick(index);
